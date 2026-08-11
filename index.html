@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>気体ラボ | 高校化学</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brand-mark">G</span><span>気体ラボ</span></a>
+    <nav><a href="#laws">4つの法則</a><a href="#simulator">実験する</a><a href="#practice">練習問題</a></nav>
+    <div class="progress-wrap"><span>学習の進み具合</span><div class="progress"><i id="progressBar"></i></div><b id="progressText">0 / 5</b></div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">CHEMISTRY · GAS LABORATORY</p>
+        <h1>気体は、<em>4つの量</em>で<br>きれいに説明できる。</h1>
+        <p class="lead">圧力 <span class="p">P</span>、体積 <span class="v">V</span>、温度 <span class="t">T</span>、物質量 <span class="n">n</span>。<br>実験して、公式を「使える道具」にしよう。</p>
+        <div class="hero-actions"><a href="#laws" class="button primary">はじめる <span>→</span></a><button class="button ghost" id="tourBtn">3分で全体像</button></div>
+      </div>
+      <div class="hero-visual" aria-label="気体分子のイメージ">
+        <div class="gas-box large"><span class="particle one"></span><span class="particle two"></span><span class="particle three"></span><span class="particle four"></span><span class="particle five"></span><span class="particle six"></span><span class="particle seven"></span><span class="particle eight"></span></div>
+        <div class="label-card label-p"><strong>P</strong><span>圧力</span></div><div class="label-card label-v"><strong>V</strong><span>体積</span></div><div class="label-card label-t"><strong>T</strong><span>温度</span></div><div class="label-card label-n"><strong>n</strong><span>物質量</span></div>
+        <p class="visual-caption">箱の中を飛び回る分子。<br>変えるのは、この4つだけ。</p>
+      </div>
+    </section>
+
+    <section class="principle-strip" id="overview">
+      <p><span>まず覚えること</span> 温度を使う計算では、必ず絶対温度 <b>K</b> にする。　<code>T [K] = t [℃] + 273</code></p>
+    </section>
+
+    <section class="content-section laws" id="laws">
+      <div class="section-head"><p class="eyebrow">01 · THE FOUR LAWS</p><h2>4つの法則を、<br>変わる量で見分けよう。</h2><p>「何を一定にしたか」が、公式を選ぶヒントです。</p></div>
+      <div class="law-grid">
+        <article class="law-card boyle active" data-law="boyle"><div class="law-num">01</div><div class="law-symbol">P × V = 一定</div><h3>ボイルの法則</h3><p>温度と物質量が一定なら、圧力と体積は反比例。</p><div class="mini-visual piston"><i></i><span class="mini-dot d1"></span><span class="mini-dot d2"></span><span class="mini-dot d3"></span><span class="mini-dot d4"></span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
+        <article class="law-card charles" data-law="charles"><div class="law-num">02</div><div class="law-symbol">V ÷ T = 一定</div><h3>シャルルの法則</h3><p>圧力と物質量が一定なら、体積と絶対温度は比例。</p><div class="mini-visual thermometer"><i></i><b>↑</b><span>温める</span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
+        <article class="law-card avogadro" data-law="avogadro"><div class="law-num">03</div><div class="law-symbol">V ÷ n = 一定</div><h3>アボガドロの法則</h3><p>圧力と温度が一定なら、体積と物質量は比例。</p><div class="mini-visual molecules"><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
+        <article class="law-card ideal" data-law="ideal"><div class="law-num">04</div><div class="law-symbol">PV = nRT</div><h3>気体の状態方程式</h3><p>4つの量すべてを、1本の式でつなぐ。</p><div class="mini-visual equation"><span>P</span><b>×</b><span>V</span><b>=</b><span>n</span><span>R</span><span>T</span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
+      </div>
+      <aside class="law-detail" id="lawDetail"><div class="detail-icon">↔</div><div><p class="detail-tag">BOYLE'S LAW</p><h3>ボイルの法則：<span>ぎゅっと押すと、圧力が上がる。</span></h3><p id="detailText">温度が同じなら、体積を 1/2 にすると圧力は 2倍。式は <b>P₁V₁ = P₂V₂</b>。注射器を押す場面をイメージしよう。</p></div><button id="detailDone" class="check-btn">理解した ✓</button></aside>
+    </section>
+
+    <section class="sim-section" id="simulator">
+      <div class="section-head inverse"><p class="eyebrow">02 · TRY IT YOURSELF</p><h2>気体を、<em>動かして</em>みよう。</h2><p>つまみを動かして、分子と数値の変化を観察しよう。</p></div>
+      <div class="simulator">
+        <div class="sim-controls"><h3>実験条件</h3><p class="control-note">温度と物質量は一定</p>
+          <label>体積 <output id="volumeOut">2.0 L</output><input id="volume" type="range" min="1" max="4" value="2" step="0.1"></label>
+          <label>温度 <output id="tempOut">300 K</output><input id="temp" type="range" min="250" max="450" value="300" step="10"></label>
+          <label>物質量 <output id="molesOut">1.0 mol</output><input id="moles" type="range" min="0.5" max="2" value="1" step="0.1"></label>
+          <button class="reset-btn" id="resetSim">↺ 基準に戻す</button>
+        </div>
+        <div class="chamber-area"><div class="chamber-label">分子のようす <span id="motionText">ふつう</span></div><div class="chamber" id="chamber"><div class="piston-top" id="pistonTop"></div><div id="particles"></div><div class="chamber-base"></div></div><p class="chamber-hint">体積を小さくすると、分子が壁にぶつかる回数が増える。</p></div>
+        <div class="readout"><p>計算結果</p><div class="pressure-number"><span id="pressureVal">1.00</span><small>atm</small></div><div class="formula-line"><span class="p">P</span> = <span class="n">n</span>RT / <span class="v">V</span></div><div class="readout-note" id="readoutNote">基準状態と同じ圧力です。</div><div class="comparison"><span>基準との比較</span><b id="compareVal">× 1.00</b></div></div>
+      </div>
+    </section>
+
+    <section class="content-section practice" id="practice">
+      <div class="section-head"><p class="eyebrow">03 · PRACTICE</p><h2>使って、身につける。</h2><p>公式を選び、途中の考え方も確かめよう。</p></div>
+      <div class="quiz-shell"><div class="quiz-top"><span class="quiz-count" id="quizCount">QUESTION 1 / 3</span><div class="dots"><i class="on"></i><i></i><i></i></div></div><div id="quizContent"></div></div>
+    </section>
+  </main>
+  <footer>気体ラボ　·　高校化学を、手で動かして理解する。</footer>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
