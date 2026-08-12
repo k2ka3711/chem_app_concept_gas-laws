@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="mobile.css" />
   <link rel="stylesheet" href="hero.css" />
   <link rel="stylesheet" href="detail.css" />
+  <link rel="stylesheet" href="v103.css" />
+  <link rel="stylesheet" href="compare-laws.css" />
 </head>
 <body>
   <header class="topbar">
@@ -26,7 +28,7 @@
         <p class="eyebrow">CHEMISTRY · GAS LABORATORY</p>
         <h1>気体は、<em>4つの量</em>で<br>きれいに説明できる。</h1>
         <p class="lead">圧力 <span class="p">P</span>、体積 <span class="v">V</span>、温度 <span class="t">T</span>、物質量 <span class="n">n</span>。<br>実験して、公式を「使える道具」にしよう。</p>
-        <div class="hero-actions"><a href="#laws" class="button primary">はじめる <span>→</span></a><button class="button ghost" id="tourBtn">3分で全体像</button></div>
+        <div class="hero-actions"><a href="#laws" class="button primary">4つの法則からはじめる <span>→</span></a></div>
       </div>
       <div class="hero-visual" aria-label="気体分子のイメージ">
         <div class="hero-labels"><div class="label-card label-p"><strong>P</strong><span>圧力</span></div><div class="label-card label-v"><strong>V</strong><span>体積</span></div><div class="label-card label-t"><strong>T</strong><span>温度</span></div><div class="label-card label-n"><strong>n</strong><span>物質量</span></div></div>
@@ -41,13 +43,20 @@
 
     <section class="content-section laws" id="laws">
       <div class="section-head"><p class="eyebrow">01 · THE FOUR LAWS</p><h2>4つの法則を、<br>変わる量で見分けよう。</h2><p>「何を一定にしたか」が、公式を選ぶヒントです。</p></div>
+      <section class="law-compare" aria-labelledby="compareTitle">
+        <div class="compare-intro"><div><p class="eyebrow">COMPARE BEFORE / AFTER</p><h3 id="compareTitle">図を比べて、変化を見つけよう。</h3><p id="compareLead">温度と物質量が一定のまま、体積を小さくすると圧力は大きくなります。</p></div><div class="law-tabs" role="tablist"><button class="law-tab active" data-compare="boyle">ボイル</button><button class="law-tab" data-compare="charles">シャルル</button><button class="law-tab" data-compare="avogadro">アボガドロ</button><button class="law-tab" data-compare="ideal">状態方程式</button></div></div>
+        <div class="before-after"><article class="state-panel"><b class="state-label">変化前</b><div class="state-chamber roomy" id="beforeChamber"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="state-values" id="beforeValues"></div></article><div class="compare-arrow" aria-hidden="true">→</div><article class="state-panel"><b class="state-label after">変化後</b><div class="state-chamber compact" id="afterChamber"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="state-values" id="afterValues"></div></article></div>
+        <div class="compare-key"><div><span>変わる量</span><b id="changingValues">P・V</b></div><div><span>一定の量</span><b id="constantValues">T・n</b></div><code id="compareFormula">P↑ → V↓（反比例）</code></div>
+        <div class="mini-check"><p><b>図を比較してみよう：</b><span id="checkQuestion">変化した量はどれ？</span></p><div id="checkOptions"><button data-answer="P">圧力 P</button><button data-answer="V">体積 V</button><button data-answer="T">温度 T</button><button data-answer="n">物質量 n</button></div><small id="checkFeedback" aria-live="polite"></small></div>
+        <p class="model-note">※ 図は理想気体のモデルです。分子自身の体積と分子間力は無視し、分子の大きさは変わりません。</p>
+      </section>
       <div class="law-grid">
-        <article class="law-card boyle active" data-law="boyle"><div class="law-num">01</div><div class="law-symbol">P × V = 一定</div><h3>ボイルの法則</h3><p>温度と物質量が一定なら、圧力と体積は反比例。</p><div class="mini-visual piston"><i></i><span class="mini-dot d1"></span><span class="mini-dot d2"></span><span class="mini-dot d3"></span><span class="mini-dot d4"></span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
-        <article class="law-card charles" data-law="charles"><div class="law-num">02</div><div class="law-symbol">V ÷ T = 一定</div><h3>シャルルの法則</h3><p>圧力と物質量が一定なら、体積と絶対温度は比例。</p><div class="mini-visual thermometer"><i></i><b>↑</b><span>温める</span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
-        <article class="law-card avogadro" data-law="avogadro"><div class="law-num">03</div><div class="law-symbol">V ÷ n = 一定</div><h3>アボガドロの法則</h3><p>圧力と温度が一定なら、体積と物質量は比例。</p><div class="mini-visual molecules"><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
-        <article class="law-card ideal" data-law="ideal"><div class="law-num">04</div><div class="law-symbol">PV = nRT</div><h3>気体の状態方程式</h3><p>4つの量すべてを、1本の式でつなぐ。</p><div class="mini-visual equation"><span>P</span><b>×</b><span>V</span><b>=</b><span>n</span><span>R</span><span>T</span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
+        <article class="law-card boyle"><div class="law-num">01</div><div class="law-symbol">P × V = 一定</div><h3>ボイルの法則</h3><p>温度と物質量が一定なら、圧力と体積は反比例。</p><div class="mini-visual piston"><i></i><span class="mini-dot d1"></span><span class="mini-dot d2"></span><span class="mini-dot d3"></span><span class="mini-dot d4"></span></div><button class="learn-btn" aria-expanded="false">くわしく見る <span>↓</span></button><div class="inline-detail"><b>温度・物質量が一定</b><p>体積が小さいほど、単位時間あたりに壁へ衝突する頻度が増え、圧力は大きくなります。</p><code>P₁V₁ = P₂V₂</code></div></article>
+        <article class="law-card charles"><div class="law-num">02</div><div class="law-symbol">V ÷ T = 一定</div><h3>シャルルの法則</h3><p>圧力と物質量が一定なら、体積と絶対温度は比例。</p><div class="mini-visual thermometer"><i></i><b>↑</b><span>温める</span></div><button class="learn-btn" aria-expanded="false">くわしく見る <span>↓</span></button><div class="inline-detail"><b>圧力・物質量が一定</b><p>温度は必ず絶対温度 K で扱います。温度が2倍なら体積も2倍です。</p><code>V₁/T₁ = V₂/T₂</code></div></article>
+        <article class="law-card avogadro"><div class="law-num">03</div><div class="law-symbol">V ÷ n = 一定</div><h3>アボガドロの法則</h3><p>圧力と温度が一定なら、体積と物質量は比例。</p><div class="mini-visual molecules"><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="learn-btn" aria-expanded="false">くわしく見る <span>↓</span></button><div class="inline-detail"><b>圧力・温度が一定</b><p>物質量が2倍なら、同じ圧力を保つために体積も2倍になります。</p><code>V₁/n₁ = V₂/n₂</code></div></article>
+        <article class="law-card ideal"><div class="law-num">04</div><div class="law-symbol">PV = nRT</div><h3>気体の状態方程式</h3><p>4つの量すべてを、1本の式でつなぐ。</p><div class="mini-visual equation"><span>P</span><b>×</b><span>V</span><b>=</b><span>n</span><span>R</span><span>T</span></div><button class="learn-btn" aria-expanded="false">くわしく見る <span>↓</span></button><div class="inline-detail"><b>R = 8.3×10³ Pa・L/(K・mol)</b><p>このアプリでは P: Pa、V: L、T: K、n: mol を用います。理想気体では分子の体積と分子間力を無視します。</p><code>PV = nRT</code></div></article>
+        <article class="law-card partial-law"><div class="law-num">05</div><div class="law-symbol">P = P₁ + P₂ + …</div><h3>ドルトンの分圧の法則</h3><p>混合気体の全圧は、各成分気体の分圧の和。</p><div class="mini-visual molecules"><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="learn-btn" aria-expanded="false">くわしく見る <span>↓</span></button><div class="inline-detail"><b>混合気体の全圧 = 分圧の和</b><p>Pᵢ = nᵢRT/V、またモル分率 xᵢ を用いて Pᵢ = xᵢP。たとえばAとBが各1.0 molなら、各分圧は全圧の1/2です。</p><code>P = P₁ + P₂ + …</code></div></article>
       </div>
-      <aside class="law-detail" id="lawDetail"><div class="detail-title"><span>選んだ法則のポイント</span><b id="detailStatus" aria-live="polite">ボイルの法則を表示中</b></div><div class="detail-content"><div class="detail-icon">↔</div><div><p class="detail-tag">BOYLE'S LAW</p><h3>ボイルの法則：<span>ぎゅっと押すと、圧力が上がる。</span></h3><p id="detailText">温度が同じなら、体積を 1/2 にすると圧力は 2倍。式は <b>P₁V₁ = P₂V₂</b>。注射器を押す場面をイメージしよう。</p></div><button id="detailDone" class="check-btn">理解した ✓</button></div></aside>
     </section>
 
     <section class="sim-section" id="simulator">
@@ -61,16 +70,16 @@
           <button class="reset-btn" id="resetSim">↺ Aを基準に戻す</button>
         </aside>
         <div class="lab-stage"><div class="lab-intro"><b>2つの容器を比べよう</b><span>分子は壁で跳ね返る。温度が高いほど速く動く。</span></div><div class="vessels"><div class="vessel-card"><div class="vessel-head"><b>容器 A</b><span id="aSpeed">速度：ふつう</span></div><canvas id="canvasA" width="330" height="245"></canvas><div class="vessel-values" id="aValues"></div></div><div class="vessel-card reference"><div class="vessel-head"><b>容器 B <small>基準</small></b><span>速度：ふつう</span></div><canvas id="canvasB" width="330" height="245"></canvas><div class="vessel-values" id="bValues"></div></div></div><p class="chamber-hint">分子の数は物質量に連動。色は2種類の気体を表し、分圧も確認できます。</p></div>
-        <aside class="readout"><p>容器 A の計算</p><div class="pressure-number"><span id="pressureVal">12.30</span><small>atm</small></div><div class="formula-line"><span class="p">P</span> = <span class="n">n</span>RT / <span class="v">V</span></div><div class="substitution" id="substitution">= 1.0 × 0.082 × 300 ÷ 2.0</div><div class="partial-box"><b>分圧（ドルトンの法則）</b><p><i class="orange-dot"></i>オレンジ <strong id="orangeP">6.15 atm</strong></p><p><i class="blue-dot"></i>青 <strong id="blueP">6.15 atm</strong></p></div><div class="comparison"><span>基準 B との圧力比</span><b id="compareVal">× 1.00</b></div></aside>
+        <aside class="readout"><p>容器 A の計算</p><div class="pressure-number"><span id="pressureVal">1.25×10⁶</span><small>Pa</small></div><div class="formula-line"><span class="p">P</span> = <span class="n">n</span>RT / <span class="v">V</span></div><div class="substitution" id="substitution">= 1.0 × 8.3×10³ × 300 ÷ 2.0</div><div class="partial-box"><b>分圧（ドルトンの分圧の法則）</b><p><i class="orange-dot"></i>オレンジ <strong id="orangeP">6.23×10⁵ Pa</strong></p><p><i class="blue-dot"></i>青 <strong id="blueP">6.23×10⁵ Pa</strong></p></div><div class="comparison"><span>基準 B との圧力比</span><b id="compareVal">× 1.00</b></div></aside>
       </div>
     </section>
 
     <section class="content-section practice" id="practice">
       <div class="section-head"><p class="eyebrow">03 · PRACTICE</p><h2>使って、身につける。</h2><p>公式を選び、途中の考え方も確かめよう。</p></div>
-      <div class="practice-layout"><aside class="set-picker"><p>問題セットを選ぶ</p><button class="set-btn active" data-set="law"><span>01</span> 法則を見分ける <b>5問</b></button><button class="set-btn" data-set="calc"><span>02</span> 基本計算 <b>5問</b></button><button class="set-btn" data-set="thinking"><span>03</span> 考察チャレンジ <b>5問</b></button><div class="set-tip">1セット約3分。<br>少しずつ、確実に。</div></aside><div class="quiz-shell"><div class="quiz-top"><span class="quiz-count" id="quizCount">LAW SET · QUESTION 1 / 5</span><div class="dots" id="dots"></div></div><div id="quizContent"></div></div></div>
+      <div class="practice-layout"><aside class="set-picker"><p>問題セットを選ぶ</p><button class="set-btn active" data-set="law"><span>01</span> 法則を見分ける <b>5問</b></button><button class="set-btn" data-set="calc"><span>02</span> 基本計算 <b>5問</b></button><button class="set-btn" data-set="thinking"><span>03</span> 考察チャレンジ <b>5問</b></button><button class="set-btn" data-set="partial"><span>04</span> 分圧を計算する <b>5問</b></button><div class="set-tip">1セット約3分。<br>少しずつ、確実に。</div></aside><div class="quiz-shell"><div class="quiz-top"><span class="quiz-count" id="quizCount">LAW SET · QUESTION 1 / 5</span><div class="dots" id="dots"></div></div><div id="quizContent"></div></div></div>
     </section>
   </main>
-  <footer>気体ラボ　·　高校化学を、手で動かして理解する。</footer>
+  <footer>気体ラボ　·　高校化学を、手で動かして理解する。 <span class="version">ver.1.0.3</span></footer>
   <div class="toast" id="toast"></div>
   <script src="script.js"></script>
 </body>
