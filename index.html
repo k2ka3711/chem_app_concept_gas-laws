@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="enhancements.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="hero.css" />
+  <link rel="stylesheet" href="detail.css" />
 </head>
 <body>
   <header class="topbar">
@@ -26,8 +29,8 @@
         <div class="hero-actions"><a href="#laws" class="button primary">はじめる <span>→</span></a><button class="button ghost" id="tourBtn">3分で全体像</button></div>
       </div>
       <div class="hero-visual" aria-label="気体分子のイメージ">
-        <div class="gas-box large"><span class="particle one"></span><span class="particle two"></span><span class="particle three"></span><span class="particle four"></span><span class="particle five"></span><span class="particle six"></span><span class="particle seven"></span><span class="particle eight"></span></div>
-        <div class="label-card label-p"><strong>P</strong><span>圧力</span></div><div class="label-card label-v"><strong>V</strong><span>体積</span></div><div class="label-card label-t"><strong>T</strong><span>温度</span></div><div class="label-card label-n"><strong>n</strong><span>物質量</span></div>
+        <div class="hero-labels"><div class="label-card label-p"><strong>P</strong><span>圧力</span></div><div class="label-card label-v"><strong>V</strong><span>体積</span></div><div class="label-card label-t"><strong>T</strong><span>温度</span></div><div class="label-card label-n"><strong>n</strong><span>物質量</span></div></div>
+        <div class="hero-gas-box"><canvas id="heroCanvas" width="360" height="250" aria-label="壁で跳ね返る気体分子"></canvas></div>
         <p class="visual-caption">箱の中を飛び回る分子。<br>変えるのは、この4つだけ。</p>
       </div>
     </section>
@@ -44,14 +47,14 @@
         <article class="law-card avogadro" data-law="avogadro"><div class="law-num">03</div><div class="law-symbol">V ÷ n = 一定</div><h3>アボガドロの法則</h3><p>圧力と温度が一定なら、体積と物質量は比例。</p><div class="mini-visual molecules"><i></i><i></i><i></i><i></i><i></i><i></i></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
         <article class="law-card ideal" data-law="ideal"><div class="law-num">04</div><div class="law-symbol">PV = nRT</div><h3>気体の状態方程式</h3><p>4つの量すべてを、1本の式でつなぐ。</p><div class="mini-visual equation"><span>P</span><b>×</b><span>V</span><b>=</b><span>n</span><span>R</span><span>T</span></div><button class="learn-btn">くわしく見る <span>→</span></button></article>
       </div>
-      <aside class="law-detail" id="lawDetail"><div class="detail-icon">↔</div><div><p class="detail-tag">BOYLE'S LAW</p><h3>ボイルの法則：<span>ぎゅっと押すと、圧力が上がる。</span></h3><p id="detailText">温度が同じなら、体積を 1/2 にすると圧力は 2倍。式は <b>P₁V₁ = P₂V₂</b>。注射器を押す場面をイメージしよう。</p></div><button id="detailDone" class="check-btn">理解した ✓</button></aside>
+      <aside class="law-detail" id="lawDetail"><div class="detail-title"><span>選んだ法則のポイント</span><b id="detailStatus" aria-live="polite">ボイルの法則を表示中</b></div><div class="detail-content"><div class="detail-icon">↔</div><div><p class="detail-tag">BOYLE'S LAW</p><h3>ボイルの法則：<span>ぎゅっと押すと、圧力が上がる。</span></h3><p id="detailText">温度が同じなら、体積を 1/2 にすると圧力は 2倍。式は <b>P₁V₁ = P₂V₂</b>。注射器を押す場面をイメージしよう。</p></div><button id="detailDone" class="check-btn">理解した ✓</button></div></aside>
     </section>
 
     <section class="sim-section" id="simulator">
       <div class="section-head inverse"><p class="eyebrow">02 · TRY IT YOURSELF</p><h2>気体を、<em>動かして</em>みよう。</h2><p>つまみを動かして、分子と数値の変化を観察しよう。</p></div>
       <div class="compare-lab">
         <aside class="sim-controls"><h3>容器 A を動かす</h3><p class="control-note">B（右）は基準：2.0 L / 300 K / 1.0 mol</p>
-          <label>体積 V <output id="volumeOut">2.0 L</output><input id="volume" type="range" min="1" max="4" value="2" step="0.1"></label>
+          <label>体積 V <output id="volumeOut">2.0 L</output><input id="volume" type="range" min="1" max="4" value="2" step="1"></label>
           <label>温度 T <output id="tempOut">300 K</output><input id="temp" type="range" min="250" max="450" value="300" step="10"></label>
           <label>全物質量 n <output id="molesOut">1.0 mol</output><input id="moles" type="range" min="0.2" max="2" value="1" step="0.1"></label>
           <label>オレンジ分子の割合 <output id="mixOut">50%</output><input id="mix" type="range" min="0" max="100" value="50" step="5"></label>
