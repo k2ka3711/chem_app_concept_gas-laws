@@ -1,4 +1,4 @@
-# gas-law-chemistry
+# chem_app_concept_gas-laws
 高等学校化学「気体の法則」学習アプリ
 
 # 更新履歴
